@@ -1,94 +1,58 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#155eef">
-<meta name="description" content="Asistente virtual informativo de la Unidad Educativa 25 de Mayo.">
-<title>Asistente virtual | Unidad Educativa 25 de Mayo</title>
-<style>
-:root{--blue:#155eef;--blue2:#3978ff;--bg:#f2f6ff;--ink:#172033;--muted:#667085;--line:#e2e9f5}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink);min-height:100vh;display:grid;place-items:center;padding:16px}
-.phone{width:min(100%,460px);height:min(850px,calc(100vh - 32px));min-height:590px;background:#fff;border:1px solid var(--line);border-radius:26px;box-shadow:0 18px 60px #20365b20;overflow:hidden;display:flex;flex-direction:column}
-header{background:linear-gradient(135deg,var(--blue),var(--blue2));color:#fff;padding:19px;display:flex;align-items:center;gap:12px}
-.avatar{width:48px;height:48px;flex:0 0 48px;border-radius:15px;background:#ffffff25;display:grid;place-items:center;font-size:25px}
-header h1{font-size:16px;line-height:1.25;margin:0 0 5px}header p{font-size:12px;line-height:1.3;margin:0;opacity:.93}
-.status{margin-left:auto;white-space:nowrap;font-size:10px;background:#ffffff25;padding:6px 8px;border-radius:99px}
-.notice{font-size:11px;background:#fff8e6;color:#765400;padding:9px 14px;border-bottom:1px solid #f2e3b6;line-height:1.4}
-#chat{padding:16px 13px;overflow-y:auto;flex:1;display:flex;flex-direction:column;gap:11px;background:linear-gradient(#f8faff,#fff)}
-.msg{max-width:92%;padding:12px 13px;border-radius:16px;font-size:14px;line-height:1.5;white-space:pre-wrap;overflow-wrap:anywhere}
-.bot{background:#edf3ff;align-self:flex-start;border-bottom-left-radius:5px}
-.user{background:var(--blue);color:white;align-self:flex-end;border-bottom-right-radius:5px}
-.options{display:flex;flex-direction:column;align-items:stretch;gap:7px;margin:1px 0 3px;max-width:96%}
-.options button{background:#fff;border:1px solid #b9ccff;color:#1749b8;border-radius:12px;padding:11px 12px;font-size:13px;cursor:pointer;text-align:left}
-.options button:hover,.options button:focus{background:#edf3ff;outline:2px solid #d6e3ff}
-footer{border-top:1px solid var(--line);padding:10px 12px;color:var(--muted);font-size:10px;text-align:center;line-height:1.4}
-.note{width:min(100%,460px);font-size:12px;color:var(--muted);line-height:1.5;margin:10px auto 0;text-align:center}
-@media(max-height:640px){.phone{height:calc(100vh - 24px);min-height:0}body{padding:12px}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#b51f2a">
+  <title>Asistente Virtual | Unidad Educativa 25 de Mayo</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<main>
-<div class="phone">
-<header>
-  <div class="avatar">🏫</div>
-  <div><h1>Asistente virtual de la<br>Unidad Educativa 25 de Mayo</h1><p>Información y orientación escolar</p></div>
-  <div class="status">● Disponible</div>
-</header>
-<div class="notice">Aviso: asistente informativo. Confirma fechas, requisitos y pagos con la dirección de la unidad educativa.</div>
-<section id="chat" aria-live="polite"></section>
-<footer>Unidad Educativa 25 de Mayo · Asistente informativo automatizado</footer>
-</div>
-<p class="note">Este asistente ofrece orientación general. No solicita ni almacena datos personales de estudiantes.</p>
-</main>
-<script>
-const chat = document.getElementById('chat');
-const mainMenu = [
- {label:'📝 Información sobre inscripciones', answer:'INSCRIPCIONES\nPara conocer las fechas, requisitos, cursos disponibles y documentos necesarios, consulta directamente con la dirección o secretaría de la Unidad Educativa 25 de Mayo.\n\nLos requisitos y plazos pueden cambiar cada gestión; este asistente no confirma cupos ni registra inscripciones.', next:[
-  {label:'📄 ¿Qué documentos debo consultar?',answer:'Pregunta en secretaría qué documentos se requieren para la gestión actual. Según el caso, pueden solicitar documentos de identidad y antecedentes escolares, pero debes confirmar la lista oficial con la unidad educativa.'},
-  {label:'📅 Consultar fechas de inscripción',answer:'Las fechas oficiales dependen de la gestión escolar. Confirma el calendario vigente con la dirección o secretaría de la Unidad Educativa 25 de Mayo.'},
-  {label:'⬅️ Menú principal',action:'menu'}
- ]},
- {label:'🗂️ Información sobre el RUDE', answer:'¿QUÉ ES EL RUDE?\nEl RUDE es el Registro Único de Estudiantes, un registro utilizado en el sistema educativo boliviano.\n\nSi necesitas llenar, actualizar o corregir el RUDE, consulta con secretaría o con la persona responsable en la unidad educativa para recibir instrucciones vigentes. No envíes aquí números de documento ni datos privados del estudiante.', next:[
-  {label:'✍️ Ayuda para llenar el RUDE',answer:'Solicita el formulario y las instrucciones oficiales a la unidad educativa. Completa los datos con ayuda de tu madre, padre o tutor cuando corresponda, y entrega la documentación por el canal oficial.'},
-  {label:'🔄 Corregir datos del RUDE',answer:'Para corregir datos, comunícate con secretaría o con la persona encargada del registro. Ten a mano los documentos de respaldo y entrégalos únicamente por un canal oficial.'},
-  {label:'⬅️ Menú principal',action:'menu'}
- ]},
- {label:'🎒 Información sobre el Bono Juancito Pinto', answer:'BONO JUANCITO PINTO\nEl Bono Juancito Pinto es un incentivo educativo cuyo pago depende de las disposiciones oficiales de cada gestión.\n\nPara confirmar beneficiarios, fechas, requisitos y modalidad de pago del año actual, consulta los comunicados oficiales del Gobierno y pregunta en la unidad educativa. Este chatbot no puede confirmar si una persona es beneficiaria ni el estado de un pago.', next:[
-  {label:'📅 Fechas de pago',answer:'Las fechas se anuncian oficialmente para cada gestión. Revisa los comunicados gubernamentales vigentes o consulta en la unidad educativa.'},
-  {label:'📋 Requisitos y beneficiarios',answer:'Los criterios de beneficiarios y los documentos pueden depender de la normativa vigente. Confirma los requisitos oficiales antes de acudir a cobrar.'},
-  {label:'⬅️ Menú principal',action:'menu'}
- ]},
- {label:'☎️ Atención al cliente / contacto', answer:'ATENCIÓN AL CLIENTE\nPara consultas específicas sobre inscripciones, RUDE, certificados, horarios u otros trámites, contacta directamente con la dirección o secretaría de la Unidad Educativa 25 de Mayo.\n\n📌 Añade aquí el número telefónico oficial, horario de atención y dirección de la unidad educativa cuando los tengas confirmados.', next:[
-  {label:'🕒 Horarios de atención',answer:'El horario no está configurado todavía. Confirma el horario oficial con la unidad educativa y luego puedes editar este mensaje en el archivo index.html.'},
-  {label:'📍 Dirección de la unidad educativa',answer:'La dirección no está configurada todavía para evitar publicar información incorrecta. Añade la dirección oficial confirmada en el archivo index.html.'},
-  {label:'⬅️ Menú principal',action:'menu'}
- ]},
- {label:'📚 Otras consultas escolares', answer:'Puedes consultar en dirección o secretaría sobre certificados, horarios, cursos, actividades escolares y otros trámites. Para darte información exacta, añade en este chatbot los datos oficiales de la unidad educativa.'}
-];
-function addMessage(text, who='bot'){
- const el=document.createElement('div');el.className='msg '+who;el.textContent=text;chat.appendChild(el);chat.scrollTop=chat.scrollHeight;
-}
-function showOptions(items){
- const wrap=document.createElement('div');wrap.className='options';
- items.forEach(item=>{
-  const b=document.createElement('button');b.type='button';b.textContent=item.label;
-  b.addEventListener('click',()=>{
-   wrap.remove();addMessage(item.label,'user');
-   if(item.action==='menu'){welcome();return}
-   addMessage(item.answer);
-   if(item.next)showOptions(item.next);
-   else showOptions([{label:'⬅️ Menú principal',action:'menu'}]);
-  });
-  wrap.appendChild(b);
- });
- chat.appendChild(wrap);chat.scrollTop=chat.scrollHeight;
-}
-function welcome(){
- addMessage('¡Hola! 👋 Bienvenido/a al asistente virtual de la Unidad Educativa 25 de Mayo.\n\n¿Qué información necesitas? Selecciona una de las opciones:');
- showOptions(mainMenu);
-}
-welcome();
-</script>
+  <header class="top">
+    <div class="crest" aria-label="Escudo del colegio">
+      <img src="assets/escudo.png" alt="Escudo de la Unidad Educativa 25 de Mayo"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+      <span class="crest-fallback">25<br>DE MAYO</span>
+    </div>
+    <div>
+      <p class="eyebrow">UNIDAD EDUCATIVA</p>
+      <h1>25 de Mayo</h1>
+      <p class="sub">Asistente virtual de información</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="welcome">
+      <span class="online"><i></i> Atención informativa</span>
+      <h2>¡Bienvenido/a!</h2>
+      <p>Soy el asistente virtual de la Unidad Educativa 25 de Mayo. Elige una opción para recibir información.</p>
+    </section>
+
+    <section class="menu" aria-label="Menú principal">
+      <button data-topic="inscripcion"><span>📝</span><b>Inscripciones</b><small>Requisitos y consultas</small></button>
+      <button data-topic="rude"><span>📄</span><b>RUDE</b><small>Registro de estudiantes</small></button>
+      <button data-topic="bono"><span>🎓</span><b>Bono Juancito Pinto</b><small>Información y consultas</small></button>
+      <button data-topic="atencion"><span>☎️</span><b>Atención al cliente</b><small>Contactos del colegio</small></button>
+      <button data-topic="horarios"><span>🕗</span><b>Horarios de atención</b><small>Horario administrativo</small></button>
+      <button data-topic="ubicacion"><span>📍</span><b>Ubicación</b><small>Buscar el colegio en Maps</small></button>
+    </section>
+
+    <section class="chat" aria-live="polite">
+      <div class="chat-head"><span class="bot">🤖</span><div><b>Asistente 25 de Mayo</b><small>Selecciona una consulta del menú</small></div></div>
+      <div id="answer" class="answer">¡Hola! ¿En qué puedo ayudarte? Selecciona una de las opciones de arriba.</div>
+    </section>
+
+    <section class="contacts">
+      <h3>Contactos directos</h3>
+      <a href="tel:73078292"><span>Secretaría</span><b>73078292</b><em>Llamar</em></a>
+      <a href="tel:77501340"><span>Regente</span><b>77501340</b><em>Llamar</em></a>
+      <a href="tel:69877397"><span>Regenta</span><b>69877397</b><em>Llamar</em></a>
+      <p>Horario de atención: <strong>8:00 a. m. a 12:00 p. m.</strong></p>
+    </section>
+    <p class="notice">La información sobre requisitos, fechas y pagos puede cambiar. Para confirmar datos oficiales, comunícate con Secretaría.</p>
+  </main>
+
+  <footer>© Unidad Educativa 25 de Mayo · Asistente virtual</footer>
+  <script src="app.js"></script>
 </body>
 </html>
