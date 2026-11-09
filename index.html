@@ -4,13 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#b51f2a">
+  <meta name="description" content="Información de inscripciones, RUDE, Bono Juancito Pinto, horarios, ubicación e información académica de la Unidad Educativa 25 de Mayo.">
   <title>Asistente Virtual | Unidad Educativa 25 de Mayo</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header class="top">
     <div class="crest" aria-label="Escudo del colegio">
-      <img src="assets/escudo.png" alt="Escudo de la Unidad Educativa 25 de Mayo"
+      <img src="assets/escudo.jpg" alt="Escudo de la Unidad Educativa 25 de Mayo"
            onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
       <span class="crest-fallback">25<br>DE MAYO</span>
     </div>
@@ -23,33 +24,35 @@
 
   <main class="wrap">
     <section class="welcome">
-      <span class="online"><i></i> Atención informativa</span>
+      <span class="online"><i></i> Información disponible en línea</span>
       <h2>¡Bienvenido/a!</h2>
-      <p>Soy el asistente virtual de la Unidad Educativa 25 de Mayo. Elige una opción para recibir información.</p>
+      <p>Soy el asistente virtual de la Unidad Educativa 25 de Mayo. Selecciona una opción para consultar información sin necesidad de llamar por teléfono.</p>
     </section>
 
     <section class="menu" aria-label="Menú principal">
-      <button data-topic="inscripcion"><span>📝</span><b>Inscripciones</b><small>Requisitos y consultas</small></button>
-      <button data-topic="rude"><span>📄</span><b>RUDE</b><small>Registro de estudiantes</small></button>
-      <button data-topic="bono"><span>🎓</span><b>Bono Juancito Pinto</b><small>Información y consultas</small></button>
-      <button data-topic="atencion"><span>☎️</span><b>Atención al cliente</b><small>Contactos del colegio</small></button>
-      <button data-topic="horarios"><span>🕗</span><b>Horarios de atención</b><small>Horario administrativo</small></button>
-      <button data-topic="ubicacion"><span>📍</span><b>Ubicación</b><small>Buscar el colegio en Maps</small></button>
+      <button data-topic="inscripcion"><span>📝</span><b>Inscripciones</b><small>Requisitos y pasos</small></button>
+      <button data-topic="rude"><span>📄</span><b>RUDE</b><small>Qué es y cómo llenarlo</small></button>
+      <button data-topic="bono"><span>🎓</span><b>Bono Juancito Pinto</b><small>Orientación para el cobro</small></button>
+      <button data-topic="horarios"><span>🕗</span><b>Horarios</b><small>Atención y turnos</small></button>
+      <button data-topic="ubicacion"><span>📍</span><b>Ubicación</b><small>Cómo llegar al colegio</small></button>
+      <button data-topic="academica"><span>📚</span><b>Información académica</b><small>Oferta formativa</small></button>
     </section>
 
     <section class="chat" aria-live="polite">
-      <div class="chat-head"><span class="bot">🤖</span><div><b>Asistente 25 de Mayo</b><small>Selecciona una consulta del menú</small></div></div>
-      <div id="answer" class="answer">¡Hola! ¿En qué puedo ayudarte? Selecciona una de las opciones de arriba.</div>
+      <div class="chat-head"><span class="bot">🤖</span><div><b>Asistente 25 de Mayo</b><small>Información y orientación</small></div></div>
+      <div id="answer" class="answer">¡Hola! Selecciona una opción del menú para consultar la información.</div>
     </section>
 
-    <section class="contacts">
-      <h3>Contactos directos</h3>
-      <a href="tel:73078292"><span>Secretaría</span><b>73078292</b><em>Llamar</em></a>
-      <a href="tel:77501340"><span>Regente</span><b>77501340</b><em>Llamar</em></a>
-      <a href="tel:69877397"><span>Regenta</span><b>69877397</b><em>Llamar</em></a>
-      <p>Horario de atención: <strong>8:00 a. m. a 12:00 p. m.</strong></p>
+    <section class="quick-links">
+      <h3>Enlaces útiles</h3>
+      <a href="https://www.minedu.gob.bo/index.php?Itemid=933&catid=93&id=8255&option=com_content&view=article" target="_blank" rel="noopener noreferrer">
+        <span><b>Formulario RUDE oficial</b><small>Ministerio de Educación de Bolivia</small></span><strong>↗</strong>
+      </a>
+      <a href="https://maps.app.goo.gl/3cigYon4AWkFXPC1A" target="_blank" rel="noopener noreferrer">
+        <span><b>Ver ubicación en Google Maps</b><small>Unidad Educativa 25 de Mayo, zona Hospital Juan XXIII</small></span><strong>↗</strong>
+      </a>
     </section>
-    <p class="notice">La información sobre requisitos, fechas y pagos puede cambiar. Para confirmar datos oficiales, comunícate con Secretaría.</p>
+    <p class="notice">Esta página es informativa. Las fechas, procedimientos oficiales y condiciones de beneficios pueden cambiar por gestión. Revisa los avisos oficiales del Ministerio de Educación cuando corresponda. No compartas datos personales sensibles en esta página.</p>
   </main>
 
   <footer>© Unidad Educativa 25 de Mayo · Asistente virtual</footer>
